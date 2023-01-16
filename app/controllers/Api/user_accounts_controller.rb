@@ -1,4 +1,4 @@
-class UserAccountsController < ApplicationController
+class Api::UserAccountsController < ApplicationController
   def create
     user = User.create!(user_params)
     session[:user_id] = user.id
