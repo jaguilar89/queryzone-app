@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
   private
 
   def authorize
-    @current_user = User.find_by(id: session[:user_id])
+    @current_user = UserAccount.find_by(id: session[:user_id])
     unless @current_user
       render json: { errors: ["Not Authorized"] }, status: :unauthorized
     end

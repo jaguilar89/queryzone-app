@@ -7,6 +7,7 @@ function NavBar() {
         <nav>
             <button>Login</button>
             <button onClick={() => navigate("/signup")}>Signup</button>
+            
         </nav>
     )
 }

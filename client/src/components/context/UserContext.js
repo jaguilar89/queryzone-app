@@ -7,7 +7,7 @@ function UserContextProvider({ children }) {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch('/me')
+            const res = await fetch('/api/me')
             if (res.ok) {
                 const user = await res.json()
                 setUser(user)
@@ -17,3 +17,5 @@ function UserContextProvider({ children }) {
 
     return <UserContext.Provider value={{ user, setUser }}> {children} </UserContext.Provider>
 }
+
+export { UserContext, UserContextProvider };
