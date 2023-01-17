@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Signup({setUser}) {
+function Signup({ setUser }) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [errors, setErrors] = useState([])
+    const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -23,9 +25,10 @@ function Signup({setUser}) {
 
             if (res.ok) {
                 const user = await res.json()
-                console.log(user)
+                setUser(user)
+                navigate("/")
             }
-        } catch(err) {
+        } catch (err) {
             console.log(err.errors)
         }
     }
@@ -33,11 +36,11 @@ function Signup({setUser}) {
     return (
         <form onSubmit={handleSubmit}>
             <label for="username">Username:</label><br />
-            <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)}/><br />
+            <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} /><br />
             <label for="password">Password</label><br />
-            <input type="text" name="lname" value={password} onChange={(e) => setPassword(e.target.value)}/><br></br>
+            <input type="text" name="lname" value={password} onChange={(e) => setPassword(e.target.value)} /><br></br>
             <label for="password-confirmation">Password Confirmation</label><br />
-            <input type="text" name="lname" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/><br></br>
+            <input type="text" name="lname" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} /><br></br>
             <input type="submit" value="Submit" />
         </form>
     )
