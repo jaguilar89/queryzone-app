@@ -1,35 +1,31 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { UserContext } from "./context/UserContext";
 
-function Signup({ setUser }) {
+function LoginForm() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [passwordConfirmation, setPasswordConfirmation] = useState("")
-    const [errors, setErrors] = useState([])
-    const navigate = useNavigate();
+    const { setUser } = useContext(UserContext)
 
     async function handleSubmit(e) {
         e.preventDefault();
+
         try {
-            const res = await fetch("/api/signup", {
+            const res = await fetch("/api/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     username,
-                    password,
-                    password_confirmation: passwordConfirmation
+                    password
                 })
-            })
-
+            });
             if (res.ok) {
-                const user = await res.json()
+                const user = await res.json();
                 setUser(user)
-                navigate("/")
             }
         } catch (err) {
-            console.log(err.errors)
+            console.log(err)
         }
     }
 
@@ -39,11 +35,9 @@ function Signup({ setUser }) {
             <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} /><br />
             <label for="password">Password</label><br />
             <input type="text" name="lname" value={password} onChange={(e) => setPassword(e.target.value)} /><br></br>
-            <label for="password-confirmation">Password Confirmation</label><br />
-            <input type="text" name="lname" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} /><br></br>
             <input type="submit" value="Submit" />
         </form>
     )
 }
 
-export default Signup;
+export default LoginForm;

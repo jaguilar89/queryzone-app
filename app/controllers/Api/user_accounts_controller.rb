@@ -1,5 +1,6 @@
 class Api::UserAccountsController < ApplicationController
   wrap_parameters format: []
+  skip_before_action :authorize, only: :create
 
   def create
     user = UserAccount.create!(user_params)
