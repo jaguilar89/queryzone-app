@@ -1,15 +1,17 @@
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext";
 
 function NavBar() {
-    const navigate = useNavigate();
-    
+    const {setUser} = useContext(UserContext)
+
+
     async function handleLogout(e){
         e.preventDefault();
         
         const res = await fetch('/api/logout', {
             method: 'DELETE'
         })
-        if (res.ok) navigate('/')
+        if (res.ok) setUser(null)
     }
     return <button onClick={handleLogout}>Logout</button>
 }
