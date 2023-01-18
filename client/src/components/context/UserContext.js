@@ -1,9 +1,11 @@
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UserContext = createContext();
 
 function UserContextProvider({ children }) {
     const [user, setUser] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         (async () => {
@@ -11,6 +13,7 @@ function UserContextProvider({ children }) {
             if (res.ok) {
                 const user = await res.json()
                 setUser(user)
+                navigate('/home')
             }
         })()
     }, []);

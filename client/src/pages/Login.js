@@ -1,27 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { UserContext } from '../components/context/UserContext';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
+import Home from './Home';
 
 function Login() {
     const [showLogin, setShowLogin] = useState(true)
+    const { user } = useContext(UserContext)
+
+    if (user) return <Home />
 
     return (
         <div>
-            <h1>Logo here</h1>
             {showLogin ? (
                 <>
-                    <LoginForm />
-                    <button onClick={() => setShowLogin(false)}>
-                        No acct? Sign up
-                    </button>
+                    <LoginForm setShowLogin={setShowLogin} />
                 </>
 
             ) : (
                 <>
-                    <SignupForm />
-                    <button onClick={() => setShowLogin(true)}>
-                        Have acct? Log In
-                    </button>
+                    <SignupForm setShowLogin={setShowLogin} />
                 </>
             )
             }

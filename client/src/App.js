@@ -5,8 +5,6 @@ import Home from './pages/Home';
 import { UserContext } from './components/context/UserContext'
 import Login from './pages/Login';
 
-
-
 function App() {
     const { user, setUser } = useContext(UserContext)
 
@@ -14,7 +12,8 @@ function App() {
 
     return (
         <Routes>
-            <Route path='/' element={<Home user={user} />} />
+            <Route path='/home' element={<Home user={user} />} />
+            <Route path='/' element={<Login />} />
         </Routes>
     )
 }
