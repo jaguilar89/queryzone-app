@@ -6,13 +6,13 @@ import { UserContext } from './components/context/UserContext'
 import Login from './pages/Login';
 
 function App() {
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
 
     if (!user) return <Login />
 
     return (
         <Routes>
-            <Route path='/home' element={<Home user={user} />} />
+            <Route path='/home' element={<Home user={user} setUser={setUser} />} />
             <Route path='/' element={<Login />} />
         </Routes>
     )
