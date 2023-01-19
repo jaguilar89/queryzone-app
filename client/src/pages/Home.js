@@ -1,7 +1,7 @@
 import NavBar from "../components/NavBar";
 
-
 function Home({ user }) {
+
     return (
         <>
             <h1>Logo here</h1>

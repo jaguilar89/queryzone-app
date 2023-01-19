@@ -6,7 +6,7 @@ import { UserContext } from './components/context/UserContext'
 import Login from './pages/Login';
 
 function App() {
-    const { user, setUser } = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
     if (!user) return <Login />
 

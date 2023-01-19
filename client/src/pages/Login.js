@@ -8,8 +8,6 @@ function Login() {
     const [showLogin, setShowLogin] = useState(true)
     const { user } = useContext(UserContext)
 
-    if (user) return <Home />
-
     return (
         <div>
             {showLogin ? (

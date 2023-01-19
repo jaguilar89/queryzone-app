@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Alert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import { UserContext } from './context/UserContext';
@@ -34,27 +35,28 @@ function SignupForm({ setShowLogin }) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        try {
-            const res = await fetch("/api/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username,
-                    password,
-                    password_confirmation: passwordConfirmation
-                })
-            })
 
-            if (res.ok) {
-                const user = await res.json()
-                setUser(user)
-                navigate("/home")
-            }
-        } catch (err) {
-            console.log(err.errors)
+        const res = await fetch("/api/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                password_confirmation: passwordConfirmation
+            })
+        })
+
+        if (res.ok) {
+            const user = await res.json()
+            setUser(user)
+            navigate("/home")
+        } else {
+            const err = await res.json()
+            setErrors(err.errors)
         }
+
     }
 
     return (
@@ -106,13 +108,16 @@ function SignupForm({ setShowLogin }) {
                             id="password-confirmation"
                             onChange={(e) => setPasswordConfirmation(e.currentTarget.value)}
                         />
+
+                        {errors.map((err) => <Alert key={err} severity="error">{err}</Alert>)}
+
                         <Button
                             type="submit"
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
-                            Sign In
+                            Create Account
                         </Button>
                         <Grid container>
                             <Grid item>

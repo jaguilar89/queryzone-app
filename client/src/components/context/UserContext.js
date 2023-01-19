@@ -6,7 +6,7 @@ const UserContext = createContext();
 function UserContextProvider({ children }) {
     const [user, setUser] = useState(null)
     const navigate = useNavigate()
-
+    
     useEffect(() => {
         (async () => {
             const res = await fetch('/api/me')
@@ -16,7 +16,7 @@ function UserContextProvider({ children }) {
                 navigate('/home')
             }
         })()
-    }, []);
+    }, [navigate]);
 
     return <UserContext.Provider value={{ user, setUser }}> {children} </UserContext.Provider>
 }

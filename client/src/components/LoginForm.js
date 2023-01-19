@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Alert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import { UserContext } from './context/UserContext';
@@ -25,29 +26,30 @@ import { UserContext } from './context/UserContext';
 function LoginForm({ setShowLogin }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [errors, setErrors] = useState([])
   const { setUser } = useContext(UserContext)
   const theme = createTheme();
   async function handleSubmit(e) {
     e.preventDefault();
 
-    try {
-      const res = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username,
-          password
-        })
-      });
-      if (res.ok) {
-        const user = await res.json();
-        setUser(user)
-      }
-    } catch (err) {
-      console.log(err)
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username,
+        password
+      })
+    });
+    if (res.ok) {
+      const user = await res.json();
+      setUser(user)
+    } else {
+      const err = await res.json();
+      setErrors(err.errors)
     }
+
   }
 
   return (
@@ -89,6 +91,9 @@ function LoginForm({ setShowLogin }) {
               autoComplete="current-password"
               onChange={(e) => setPassword(e.currentTarget.value)}
             />
+
+            {errors.map((err) => <Alert key={err} severity="error">{err}</Alert>)}
+
             <Button
               type="submit"
               fullWidth
