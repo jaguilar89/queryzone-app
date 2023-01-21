@@ -1,12 +1,12 @@
 import NavBar from "../components/NavBar";
+import MainContent from "../components/MainContent";
 
 function Home({ user }) {
 
     return (
         <>
-            <h1>Logo here</h1>
             <NavBar />
-            {user && <h2>Welcome {user.username}</h2>}
+            <MainContent />
         </>
     )
 }
