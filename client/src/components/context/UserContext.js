@@ -13,7 +13,6 @@ function UserContextProvider({ children }) {
             if (res.ok) {
                 const user = await res.json()
                 setUser(user)
-                navigate('/home')
             }
         })()
     }, [navigate]);
