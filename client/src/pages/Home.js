@@ -1,12 +1,12 @@
 import NavBar from "../components/NavBar";
-import MainContent from "../components/MainContent";
+import PostList from "../components/PostList";
 
 function Home({ user }) {
 
     return (
         <>
             <NavBar />
-            <MainContent />
+            <PostList />
         </>
     )
 }

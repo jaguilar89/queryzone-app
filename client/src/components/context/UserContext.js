@@ -5,7 +5,6 @@ const UserContext = createContext();
 
 function UserContextProvider({ children }) {
     const [user, setUser] = useState(null)
-    const navigate = useNavigate()
     
     useEffect(() => {
         (async () => {
@@ -15,7 +14,7 @@ function UserContextProvider({ children }) {
                 setUser(user)
             }
         })()
-    }, [navigate]);
+    }, []);
 
     return <UserContext.Provider value={{ user, setUser }}> {children} </UserContext.Provider>
 }

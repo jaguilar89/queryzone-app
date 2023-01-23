@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Card from '@mui/material/Card'
-import { CardContent, Divider, Typography } from "@mui/material";
+import { CardContent, Typography } from "@mui/material";
 
 function MainContent() {
    const container = {
