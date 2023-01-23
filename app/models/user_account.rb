@@ -4,4 +4,6 @@ class UserAccount < ApplicationRecord
   validates :password, length: { minimum: 8 }
 
   has_many :posts
+  has_many :comments
+  has_many :posts, through: :comments
 end
