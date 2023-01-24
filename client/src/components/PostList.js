@@ -1,15 +1,30 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import Card from '@mui/material/Card'
-import { CardContent, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import PostCard from "./PostCard";
 
 function MainContent() {
+   const [postList, setPostList] = useState([])
+
+   useEffect(() => {
+      (async () => {
+         const res = await fetch('/api/posts')
+         if (res.ok) {
+            const posts = await res.json()
+            setPostList(...postList, posts)
+         } else {
+            const err = await res.json()
+            console.log(err)
+         }
+      })()
+   }, []);
+
    const container = {
       width: '100%',
       height: '100%',
       display: 'inline-block',
       alignItems: 'center',
-      textAlign: 'center',
+      textAlign: 'left',
       border: '1px solid black'
    }
 
@@ -27,46 +42,15 @@ function MainContent() {
       <Box sx={container}>
          <Box sx={content}>
             <Stack spacing={3}>
-              <Card sx={{width: 'auto'}}>
-               <CardContent>
-                  <Typography variant="h5">
-                     something 
-                  </Typography>
-                  <Typography variant="body2">
-                     Post Preview
-                  </Typography>
-               </CardContent>
-              </Card>
-              <Card sx={{width: 'auto'}}>
-               <CardContent>
-                  <Typography variant="h5">
-                     Post Titleeeeeeeeeeeeeeeedddddddddddddddddddddddddddddddddddddd
-                  </Typography>
-                  <Typography variant="body2">
-                     Post Preview
-                  </Typography>
-               </CardContent>
-              </Card>
-              <Card sx={{width: 'auto'}}>
-               <CardContent>
-                  <Typography variant="h5">
-                     Post Titleeeeeeeeeeeeeeeedddddddddddddddddddddddddddddddddddddd
-                  </Typography>
-                  <Typography variant="body2">
-                     Post Preview
-                  </Typography>
-               </CardContent>
-              </Card>
-              <Card sx={{width: 'auto'}}>
-               <CardContent>
-                  <Typography variant="h5">
-                     Post Titleeeeeeeeeeeeeeeedddddddddddddddddddddddddddddddddddddd
-                  </Typography>
-                  <Typography variant="body2">
-                     Post Preview
-                  </Typography>
-               </CardContent>
-              </Card>
+               {postList.map((post) => (
+                  <PostCard
+                     key={post.id}
+                     id={post.id}
+                     author={post.user_account_name}
+                     title={post.title}
+                     body={post.body}
+                  />
+               ))}
             </Stack>
 
          </Box>
