@@ -1,7 +1,9 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
+import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import PostCard from "./PostCard";
+import { fontSize } from "@mui/system";
 
 function MainContent() {
    const [postList, setPostList] = useState([])
@@ -24,7 +26,7 @@ function MainContent() {
       height: '100%',
       display: 'inline-block',
       alignItems: 'center',
-      textAlign: 'left',
+      textAlign: 'center',
       border: '1px solid black'
    }
 
@@ -32,14 +34,17 @@ function MainContent() {
       overflowY: 'scroll',
       width: '720px',
       margin: 'auto',
+      textAlign: 'left',
       backgroundColor: 'white',
       color: 'blue',
       border: '1px solid red',
       overflowWrap: 'break-word',
    }
 
+
    return (
       <Box sx={container}>
+         <Button variant="contained" sx={{margin: '20px'}}>Ask Question</Button>
          <Box sx={content}>
             <Stack spacing={3}>
                {postList.map((post) => (

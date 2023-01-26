@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import { UserContext } from './components/context/UserContext'
 import Login from './pages/Login';
 import Post from './pages/Post';
+import NewPostForm from './components/NewPostForm';
 
 function App() {
     const { user, setUser } = useContext(UserContext)
@@ -15,6 +16,7 @@ function App() {
         <Routes>
             <Route path='/' element={<Home user={user} setUser={setUser} />} />
             <Route path='/posts/:id' element={<Post />} />
+            <Route path='/posts/new' element={<NewPostForm />} />
         </Routes>
     )
 }
