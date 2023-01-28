@@ -5,7 +5,7 @@ function Home({ user }) {
 
     return (
         <>
-            <NavBar />
+            
             <PostList />
         </>
     )

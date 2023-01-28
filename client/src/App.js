@@ -6,6 +6,7 @@ import { UserContext } from './components/context/UserContext'
 import Login from './pages/Login';
 import Post from './pages/Post';
 import NewPostForm from './components/NewPostForm';
+import NavBar from './components/NavBar';
 
 function App() {
     const { user, setUser } = useContext(UserContext)
@@ -13,11 +14,14 @@ function App() {
     if (!user) return <Login />
 
     return (
-        <Routes>
-            <Route path='/' element={<Home user={user} setUser={setUser} />} />
-            <Route path='/posts/:id' element={<Post />} />
-            <Route path='/posts/new' element={<NewPostForm />} />
-        </Routes>
+        <>
+            <NavBar />
+            <Routes>
+                <Route path='/' element={<Home user={user} setUser={setUser} />} />
+                <Route path='/posts/:id' element={<Post />} />
+                <Route path='/posts/new' element={<NewPostForm />} />
+            </Routes>
+        </>
     )
 }
 
