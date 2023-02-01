@@ -1,12 +1,13 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { Button } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import PostCard from "./PostCard";
-import { fontSize } from "@mui/system";
 
-function MainContent() {
-   const [postList, setPostList] = useState([])
+
+function PostList({ postList, setPostList }) {
+   const navigate = useNavigate();
 
    useEffect(() => {
       (async () => {
@@ -20,6 +21,7 @@ function MainContent() {
          }
       })()
    }, []);
+
 
    const container = {
       width: '100%',
@@ -44,7 +46,13 @@ function MainContent() {
 
    return (
       <Box sx={container}>
-         <Button variant="contained" sx={{margin: '20px'}}>Ask Question</Button>
+         <Button
+            variant="contained"
+            sx={{ margin: '20px' }}
+            onClick={() => navigate("/posts/new")}
+         >
+            Ask Question
+         </Button>
          <Box sx={content}>
             <Stack spacing={3}>
                {postList.map((post) => (
@@ -63,4 +71,4 @@ function MainContent() {
    )
 }
 
-export default MainContent;
+export default PostList;

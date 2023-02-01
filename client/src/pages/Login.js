@@ -8,14 +8,10 @@ function Login() {
     return (
         <div>
             {showLogin ? (
-                <>
-                    <LoginForm setShowLogin={setShowLogin} />
-                </>
+                <LoginForm setShowLogin={setShowLogin} />
 
             ) : (
-                <>
-                    <SignupForm setShowLogin={setShowLogin} />
-                </>
+                <SignupForm setShowLogin={setShowLogin} />
             )
             }
         </div>
