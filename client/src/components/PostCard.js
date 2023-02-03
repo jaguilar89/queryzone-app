@@ -1,14 +1,14 @@
-import { CardContent,CardHeader, Link, Typography } from "@mui/material";
+import { CardHeader, Link } from "@mui/material";
 import Card from "@mui/material/Card";
 
-function PostCard({ id, author, title, body }) {
+function PostCard({ postId, author, title }) {
 
     return (
-       <Link href={`/posts/${id}`} underline="none">
-         <Card sx={{ width: 'auto' }}>
-            <CardHeader title={title} subheader={author} />
-        </Card>
-       </Link>
+        <Link href={`/posts/${postId}`} underline="none">
+            <Card sx={{ width: 'auto' }}>
+                <CardHeader title={title} subheader={author} />
+            </Card>
+        </Link>
     )
 }
 

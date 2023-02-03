@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Container } from "@mui/material";
 
 function Post() {
     const [post, setPost] = useState([])
@@ -11,17 +12,16 @@ function Post() {
             if (res.ok) {
                 const post = await res.json()
                 setPost(post)
-                console.log(post)
             }
         })()
-    }, []);
+    }, [id]);
 
     return (
-        <div className="post">
+        <Container component='div' sx={{border: '1px solid red'}}>
             <h1>{post.title}</h1>
             <cite>Asked By {post.user_account_name}</cite>
             <p>{post.body}</p>
-        </div>
+        </Container>
     )
 }
 

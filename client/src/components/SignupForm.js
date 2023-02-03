@@ -10,7 +10,6 @@ import Alert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import { UserContext } from './context/UserContext';
-import { useNavigate } from 'react-router-dom';
 
 /* function Copyright(props) {
   return (
@@ -31,7 +30,6 @@ function SignupForm({ setShowLogin }) {
     const [errors, setErrors] = useState([])
     const { setUser } = useContext(UserContext)
     const theme = createTheme()
-    const navigate = useNavigate()
 
     async function handleSubmit(e) {
         e.preventDefault();

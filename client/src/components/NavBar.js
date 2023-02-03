@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,14 +9,15 @@ import InputBase from '@mui/material/InputBase';
 //import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
+//import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 //import MailIcon from '@mui/icons-material/Mail';
 //import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
+//import MoreIcon from '@mui/icons-material/MoreVert';
 import { UserContext } from './context/UserContext';
-import Drawer from '@mui/material/Drawer';
+import { Link } from '@mui/material';
+//import Drawer from '@mui/material/Drawer';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -61,7 +62,7 @@ function NavBar() {
 
     const isMenuOpen = Boolean(anchorEl);
 
-    const { user, setUser } = React.useContext(UserContext)
+    const { setUser } = React.useContext(UserContext)
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -106,6 +107,7 @@ function NavBar() {
         <Box sx={{ flexGrow: 1, position: 'sticky',  }}>
             <AppBar position="static" sx={{backgroundColor: '#f5f5f5', color: '#646464'}}>
                 <Toolbar>
+                    <Link href='/' underline='none'>
                     <Typography
                         variant="h6"
                         noWrap
@@ -114,6 +116,7 @@ function NavBar() {
                     >
                         App logo here?
                     </Typography>
+                    </Link>
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />

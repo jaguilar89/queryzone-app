@@ -14,7 +14,7 @@ function PostList({ postList, setPostList }) {
          const res = await fetch('/api/posts')
          if (res.ok) {
             const posts = await res.json()
-            setPostList(...postList, posts)
+            setPostList(posts)
          } else {
             const err = await res.json()
             console.log(err)
@@ -22,6 +22,16 @@ function PostList({ postList, setPostList }) {
       })()
    }, []);
 
+
+   const postCards = postList.map((post) => (
+      <PostCard
+         key={post}
+         postId={post.id}
+         author={post.user_account_name}
+         title={post.title}
+         body={post.body}
+      />
+   ))
 
    const container = {
       width: '100%',
@@ -45,7 +55,7 @@ function PostList({ postList, setPostList }) {
 
 
    return (
-      <Box sx={container}>
+      <Box sx={container} component='div'>
          <Button
             variant="contained"
             sx={{ margin: '20px' }}
@@ -55,15 +65,7 @@ function PostList({ postList, setPostList }) {
          </Button>
          <Box sx={content}>
             <Stack spacing={3}>
-               {postList.map((post) => (
-                  <PostCard
-                     key={post.id}
-                     id={post.id}
-                     author={post.user_account_name}
-                     title={post.title}
-                     body={post.body}
-                  />
-               ))}
+               {postCards}
             </Stack>
 
          </Box>

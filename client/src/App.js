@@ -9,7 +9,7 @@ import NewPostForm from './components/NewPostForm';
 import NavBar from './components/NavBar';
 
 function App() {
-    const { user, setUser } = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const [postList, setPostList] = useState([])
 
     if (!user) return <Login />

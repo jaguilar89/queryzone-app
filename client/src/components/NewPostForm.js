@@ -3,11 +3,13 @@ import Container from "@mui/material/Container";
 import Box from '@mui/material/Box'
 import Button from "@mui/material/Button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
-function NewPostForm() {
+function NewPostForm({ postList, setPostList }) {
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
+    const navigate = useNavigate()
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -21,7 +23,8 @@ function NewPostForm() {
         })
         if (res.ok) {
             const post = await res.json()
-            console.log(post)
+            setPostList([...postList, post])
+            navigate(`/posts/${post.id}`)
         } else {
             const err = await res.json()
             console.log(err)
