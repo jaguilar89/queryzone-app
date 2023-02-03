@@ -22,6 +22,9 @@ function NewPostForm() {
         if (res.ok) {
             const post = await res.json()
             console.log(post)
+        } else {
+            const err = await res.json()
+            console.log(err)
         }
     }
     return (
@@ -41,6 +44,7 @@ function NewPostForm() {
                 multiline
                 label="Specify the details of your question..."
                 rows={32}
+                onChange={(e) => setBody(e.currentTarget.value)}
                 inputProps={{
                     maxLength: 1000,
                 }}

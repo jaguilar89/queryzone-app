@@ -93,7 +93,7 @@ function LoginForm({ setShowLogin }) {
               onChange={(e) => setPassword(e.currentTarget.value)}
             />
 
-            {errors.map((err) => <Alert key={err} severity="error">{err}</Alert>)}
+            {errors && errors.map((err) => <Alert key={err} severity="error">{err}</Alert>)}
 
             <Button
               type="submit"

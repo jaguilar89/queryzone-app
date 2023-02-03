@@ -51,7 +51,6 @@ function SignupForm({ setShowLogin }) {
         if (res.ok) {
             const user = await res.json()
             setUser(user)
-            navigate("/home")
         } else {
             const err = await res.json()
             setErrors(err.errors)
