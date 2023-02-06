@@ -18,9 +18,9 @@ function App() {
         <>
             <NavBar />
             <Routes>
-                <Route path='/' element={<PostList postList={postList} setPostList={setPostList} />} />
                 <Route path='/posts/:id' element={<Post />} />
                 <Route path='/posts/new' element={<NewPostForm postList={postList} setPostList={setPostList}/>} />
+                <Route path='/' element={<PostList postList={postList} setPostList={setPostList} />} />
             </Routes>
         </>
     )
