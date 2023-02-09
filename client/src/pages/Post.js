@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Container, Divider } from "@mui/material";
-import Comments from "../components/Comments";
+import CommentsContainer from "../components/CommentsContainer";
 
 function Post() {
     const [post, setPost] = useState([])
@@ -25,7 +25,7 @@ function Post() {
             <p>{post.body}</p>
         </Container>
         <Divider />
-        <Comments />
+        <CommentsContainer comments={post.comments}/>
        </>
     )
 }

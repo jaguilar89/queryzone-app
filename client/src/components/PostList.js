@@ -30,6 +30,7 @@ function PostList({ postList, setPostList }) {
          author={post.user_account_name}
          title={post.title}
          body={post.body}
+         comments={post.comments}
       />
    ))
 
@@ -44,7 +45,7 @@ function PostList({ postList, setPostList }) {
 
    const content = {
       overflowY: 'scroll',
-      width: '720px',
+      width: '800px',
       margin: 'auto',
       textAlign: 'left',
       backgroundColor: 'white',
