@@ -1,4 +1,4 @@
-import { Avatar, Grid, Paper } from "@mui/material";
+import Container from "@mui/material/Container";
 import PostComment from "./PostComment";
 /*
 const imgLink =
@@ -7,12 +7,11 @@ const imgLink =
 
 function CommentsContainer({ comments }) {
   return (
-    <div style={{ padding: 14 }} className="App">
+    <Container sx={{textAlign: 'center'}}>
       <h1>Comments</h1>
       {comments && comments.map((comment) => <PostComment comment={comment}/>)}
-    </div>
-    // TODO: add input for adding a new comment
-  );
+    </Container>
+  )
 }
 
 export default CommentsContainer;
