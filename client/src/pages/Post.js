@@ -6,6 +6,7 @@ import NewCommentForm from "../components/NewCommentForm";
 
 function Post() {
     const [post, setPost] = useState([])
+    const [postComments, setPostComments] = useState([])
     const { id } = useParams();
 
     useEffect(() => {
@@ -14,21 +15,27 @@ function Post() {
             if (res.ok) {
                 const post = await res.json()
                 setPost(post)
+                setPostComments(post.comments)
+                console.log(postComments)
             }
         })()
-    }, [id]);
+    }, [postComments.length]);
 
     return (
-       <>
-        <Container component='div' sx={{border: '1px solid red'}}>
-            <h1>{post.title}</h1>
-            <cite>Asked by {post.user_account_name}</cite>
-            <p>{post.body}</p>
-        </Container>
-        <Divider />
-        <CommentsContainer comments={post.comments}/>
-        <NewCommentForm />
-       </>
+        <>
+            <Container component='div' sx={{ border: '1px solid red' }}>
+                <h1>{post.title}</h1>
+                <cite>Asked by {post.user_account_name}</cite>
+                <p>{post.body}</p>
+            </Container>
+            <Divider />
+            <CommentsContainer postComments={postComments} />
+            <NewCommentForm
+                postID={id}
+                postComments={postComments}
+                setPostComments={setPostComments}
+            />
+        </>
     )
 }
 

@@ -1,7 +1,12 @@
 import { Grid, Paper, Avatar } from "@mui/material"
+import * as dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 function PostComment({ comment }) {
-    const { user_account_name, body } = comment
+    const { user_account_name, body, created_at } = comment
+    const postDate = new Date(created_at)
+    dayjs.extend(relativeTime)
+
     return (
         <>
             <Paper elevation={3} style={{ padding: "20px 10px", marginTop: 25 }}>
@@ -15,7 +20,7 @@ function PostComment({ comment }) {
                             {body}
                         </p>
                         <p style={{ textAlign: "left", color: "gray" }}>
-                            posted 1 minute ago {/*TODO: change comment serializer to show when comment was posted also */}
+                            Posted {dayjs(created_at).fromNow()}
                         </p>
                     </Grid>
                 </Grid>
