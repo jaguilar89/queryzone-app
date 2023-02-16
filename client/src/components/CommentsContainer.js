@@ -1,10 +1,5 @@
 import Container from "@mui/material/Container";
 import PostComment from "./PostComment";
-import { useEffect } from "react";
-/*
-const imgLink =
-  "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260";
-  */
 
 function CommentsContainer({ postComments }) {
 

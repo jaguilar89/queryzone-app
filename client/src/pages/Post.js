@@ -16,7 +16,6 @@ function Post() {
                 const post = await res.json()
                 setPost(post)
                 setPostComments(post.comments)
-                console.log(postComments)
             }
         })()
     }, [postComments.length]);
@@ -29,7 +28,7 @@ function Post() {
                 <p>{post.body}</p>
             </Container>
             <Divider />
-            <CommentsContainer postComments={postComments} />
+            <CommentsContainer postComments={postComments} setPostComments={setPostComments}/>
             <NewCommentForm
                 postID={id}
                 postComments={postComments}

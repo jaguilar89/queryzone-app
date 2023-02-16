@@ -21,7 +21,9 @@ function NewCommentForm({ postID, postComments, setPostComments }) {
         if (res.ok) {
             const comment = await res.json()
             setPostComments([...postComments, comment])
-            console.log(comment)
+        } else {
+            const err = await res.json()
+            console.log(err)
         }
 
     }
