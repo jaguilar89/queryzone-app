@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Container, Divider } from "@mui/material";
+import { Box, Button, ButtonGroup, Container, Divider } from "@mui/material";
 import CommentsContainer from "../components/CommentsContainer";
 import NewCommentForm from "../components/NewCommentForm";
 
@@ -26,9 +26,20 @@ function Post() {
                 <h1>{post.title}</h1>
                 <cite>Asked by {post.user_account_name}</cite>
                 <p>{post.body}</p>
+                <Box
+                    m={1}
+                    display='flex'
+                    justifyContent="flex-end"
+                    alignItems="flex-end"
+                >
+                    <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                        <Button>Edit</Button>
+                        <Button>Delete</Button>
+                    </ButtonGroup>
+                </Box>
             </Container>
             <Divider />
-            <CommentsContainer postComments={postComments} setPostComments={setPostComments}/>
+            <CommentsContainer postComments={postComments} setPostComments={setPostComments} />
             <NewCommentForm
                 postID={id}
                 postComments={postComments}

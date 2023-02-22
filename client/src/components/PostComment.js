@@ -1,4 +1,4 @@
-import { Grid, Paper, Avatar, Button } from "@mui/material"
+import { Grid, Paper, Avatar, Button, Box, ButtonGroup } from "@mui/material"
 import * as dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useContext } from "react"
@@ -9,14 +9,20 @@ function PostComment({ comment }) {
     const { user } = useContext(UserContext)
     dayjs.extend(relativeTime)
 
-    const canDelete = user.id === user_account_id
-    const deleteButton = canDelete ? <Grid item container direction='column' alignItems='flex-start'><Button size='small' variant='contained' onClick={handleDelete}>DELETE</Button></Grid> : null
+    const canDelete = user.id === user_account_id //delete/edit button will only display if the post belongs to the logged in user
+    const deleteButton = canDelete ?
+        <Box m={1} display='flex' justifyContent='flex-end' alignContent='flex-end'>
+            <ButtonGroup variant="contained">
+                <Button>Edit</Button>
+                <Button>Delete</Button>
+            </ButtonGroup>
+        </Box> : null
 
     function handleDelete(e) {
         fetch(`/api/comments/${id}`, {
             method: 'DELETE'
         })
-        .then(window.location.reload())
+            .then(window.location.reload())
     }
 
     return (
@@ -34,9 +40,9 @@ function PostComment({ comment }) {
                         <p style={{ textAlign: "left", color: "gray" }}>
                             Posted {dayjs(created_at).fromNow()}
                         </p>
+                        {deleteButton}
                     </Grid>
                 </Grid>
-                {deleteButton}
             </Paper>
         </>
     )
