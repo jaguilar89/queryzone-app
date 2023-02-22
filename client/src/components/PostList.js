@@ -15,6 +15,7 @@ function PostList({ postList, setPostList }) {
          if (res.ok) {
             const posts = await res.json()
             setPostList(posts)
+            console.log(postList)
          } else {
             const err = await res.json()
             console.log(err)
@@ -31,6 +32,7 @@ function PostList({ postList, setPostList }) {
          title={post.title}
          body={post.body}
          comments={post.comments}
+         created_at={post.created_at}
       />
    ))
 
