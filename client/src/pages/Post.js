@@ -39,7 +39,10 @@ function Post() {
                 </Box>
             </Container>
             <Divider />
-            <CommentsContainer postComments={postComments} setPostComments={setPostComments} />
+            <CommentsContainer
+                postComments={postComments}
+                setPostComments={setPostComments}
+            />
             <NewCommentForm
                 postID={id}
                 postComments={postComments}

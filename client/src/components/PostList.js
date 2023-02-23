@@ -15,7 +15,6 @@ function PostList({ postList, setPostList }) {
          if (res.ok) {
             const posts = await res.json()
             setPostList(posts)
-            console.log(postList)
          } else {
             const err = await res.json()
             console.log(err)
@@ -26,7 +25,7 @@ function PostList({ postList, setPostList }) {
 
    const postCards = postList.map((post) => (
       <PostCard
-         key={post}
+         key={post.id}
          postId={post.id}
          author={post.user_account_name}
          title={post.title}

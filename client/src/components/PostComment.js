@@ -1,22 +1,32 @@
 import { Grid, Paper, Avatar, Button, Box, ButtonGroup } from "@mui/material"
 import * as dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { UserContext } from "./context/UserContext"
+import EditCommentForm from "./EditCommentForm"
 
-function PostComment({ comment }) {
+function PostComment({ comment, postComments, setPostComments }) {
     const { id, user_account_name, user_account_id, body, created_at } = comment
     const { user } = useContext(UserContext)
+    const [open, setOpen] = useState(false)
     dayjs.extend(relativeTime)
 
     const canDelete = user.id === user_account_id //delete/edit button will only display if the post belongs to the logged in user
-    const deleteButton = canDelete ?
+    const editDeleteButton = canDelete ?
         <Box m={1} display='flex' justifyContent='flex-end' alignContent='flex-end'>
             <ButtonGroup variant="contained">
-                <Button>Edit</Button>
-                <Button>Delete</Button>
+                <Button onClick={handleClickEdit}>Edit</Button>
+                <Button onClick={handleDelete}>Delete</Button>
             </ButtonGroup>
         </Box> : null
+
+    function handleClickEdit() {
+        setOpen(true)
+    }
+
+    function handleClickClose() {
+        setOpen(false)
+    }
 
     function handleDelete(e) {
         fetch(`/api/comments/${id}`, {
@@ -38,12 +48,21 @@ function PostComment({ comment }) {
                             {body}
                         </p>
                         <p style={{ textAlign: "left", color: "gray" }}>
-                            Posted {dayjs(created_at).fromNow()}
+                            Answered {dayjs(created_at).fromNow()}
                         </p>
-                        {deleteButton}
+                        {editDeleteButton}
                     </Grid>
                 </Grid>
             </Paper>
+            {open && <EditCommentForm
+                id={id}
+                open={open}
+                setOpen={setOpen}
+                onClose={handleClickClose}
+                body={body}
+                postComments={postComments}
+                setPostComments={setPostComments}
+            />}
         </>
     )
 }
