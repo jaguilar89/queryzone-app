@@ -32,7 +32,7 @@ function PostComment({ comment, postComments, setPostComments }) {
         fetch(`/api/comments/${id}`, {
             method: 'DELETE'
         })
-            .then(window.location.reload())
+            .then(window.location.reload()) //TODO: use state mgmt
     }
 
     return (

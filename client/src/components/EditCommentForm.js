@@ -4,15 +4,15 @@ import { useState } from "react";
 function EditCommentForm({ id, open, onClose, body, postComments, setPostComments }) {
     const [newPostComment, setNewPostComment] = useState(body)
 
-    function updateComment(updatedComment){
-        const updatedComments = postComments.map((comment) => {
+    function updateComment(updatedComment) {
+        const updatedCommentsList = postComments.map((comment) => {
             if (updatedComment.id === comment.id) {
                 return updatedComment
             } else {
                 return comment
             }
         });
-        setPostComments(updatedComments)
+        setPostComments(updatedCommentsList)
     }
 
     async function handleSubmitEdit(e) {
@@ -61,11 +61,11 @@ function EditCommentForm({ id, open, onClose, body, postComments, setPostComment
 
                     />
                 </Container>
+                <DialogActions>
+                    <Button type="submit">Save</Button>
+                    <Button onClick={onClose}>Close</Button>
+                </DialogActions>
             </DialogContent>
-            <DialogActions>
-                <Button type="submit">Save</Button>
-                <Button onClick={onClose}>Close</Button>
-            </DialogActions>
         </Dialog>
     )
 }
