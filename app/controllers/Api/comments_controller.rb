@@ -5,7 +5,9 @@ class Api::CommentsController < ApplicationController
   end
 
   def update
-    
+    comment = Comment.find_by(id: params[:id])
+    comment.update(body: params[:body])
+    render json: comment, status: :ok
   end
 
   def destroy

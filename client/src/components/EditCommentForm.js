@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function EditCommentForm({ id, open, onClose, body, postComments, setPostComments }) {
     const [newPostComment, setNewPostComment] = useState(body)
-
+    //console.log(id)
     function updateComment(updatedComment) {
         const updatedCommentsList = postComments.map((comment) => {
             if (updatedComment.id === comment.id) {
@@ -17,7 +17,7 @@ function EditCommentForm({ id, open, onClose, body, postComments, setPostComment
 
     async function handleSubmitEdit(e) {
         e.preventDefault()
-        const res = await fetch(`/api/posts/${id}`, {
+        const res = await fetch(`/api/comments/${id}`, {
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json"
@@ -27,8 +27,9 @@ function EditCommentForm({ id, open, onClose, body, postComments, setPostComment
             })
         })
         if (res.ok) {
-            const updatedComment = await res.json()
+            const updatedComment = await res.json();
             updateComment(updatedComment)
+            onClose()
         } else {
             const err = await res.json()
             console.log(err)
@@ -60,11 +61,11 @@ function EditCommentForm({ id, open, onClose, body, postComments, setPostComment
                         onChange={(e) => setNewPostComment(e.currentTarget.value)}
 
                     />
-                </Container>
                 <DialogActions>
                     <Button type="submit">Save</Button>
                     <Button onClick={onClose}>Close</Button>
                 </DialogActions>
+                </Container>
             </DialogContent>
         </Dialog>
     )

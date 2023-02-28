@@ -18,7 +18,7 @@ function Post() {
                 setPostComments(post.comments)
             }
         })()
-    }, [postComments.length]);
+    }, [id]);
 
     return (
         <>

@@ -5,7 +5,7 @@ import { useContext, useState } from "react"
 import { UserContext } from "./context/UserContext"
 import EditCommentForm from "./EditCommentForm"
 
-function PostComment({ comment, postComments, setPostComments }) {
+function PostComment({ comment, postComments, setPostComments, onDelete }) {
     const { id, user_account_name, user_account_id, body, created_at } = comment
     const { user } = useContext(UserContext)
     const [open, setOpen] = useState(false)
@@ -32,7 +32,9 @@ function PostComment({ comment, postComments, setPostComments }) {
         fetch(`/api/comments/${id}`, {
             method: 'DELETE'
         })
-            .then(window.location.reload()) //TODO: use state mgmt
+        setPostComments(postComments.filter((postComment) => postComment.id !== comment.id))
+        /*Filter out the deleted comment by comparing the current comment with each comment in the postComments array, 
+        if the id of the current comment matches the id of a comment in postComments, do not return it */
     }
 
     return (
