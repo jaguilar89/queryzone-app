@@ -54,5 +54,3 @@ function NewCommentForm({ postID, postComments, setPostComments }) {
 }
 
 export default NewCommentForm;
-
-//TODO: finish comment form component

@@ -5,7 +5,7 @@ import { useContext, useState } from "react"
 import { UserContext } from "./context/UserContext"
 import EditCommentForm from "./EditCommentForm"
 
-function PostComment({ comment, postComments, setPostComments, onDelete }) {
+function PostComment({ comment, postComments, setPostComments }) {
     const { id, user_account_name, user_account_id, body, created_at } = comment
     const { user } = useContext(UserContext)
     const [open, setOpen] = useState(false)

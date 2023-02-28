@@ -1,10 +1,9 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { Button } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PostCard from "./PostCard";
-
 
 function PostList({ postList, setPostList }) {
    const navigate = useNavigate();
@@ -54,7 +53,6 @@ function PostList({ postList, setPostList }) {
       border: '1px solid red',
       overflowWrap: 'break-word',
    }
-
 
    return (
       <Box sx={container} component='div'>

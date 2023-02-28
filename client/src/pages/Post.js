@@ -32,10 +32,10 @@ function Post() {
                     justifyContent="flex-end"
                     alignItems="flex-end"
                 >
-                    <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                    {/* <ButtonGroup variant="contained" aria-label="outlined primary button group">
                         <Button>Edit</Button>
                         <Button>Delete</Button>
-                    </ButtonGroup>
+                    </ButtonGroup> */}
                 </Box>
             </Container>
             <Divider />
