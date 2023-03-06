@@ -8,7 +8,7 @@ function PostCard({ postId, author, title, created_at }) {
     return (
         <Link href={`/posts/${postId}`} underline="none">
             <Card sx={{ width: 'auto' }}>
-            <CardHeader title={title} subheader={`${author} asked ${dayjs(created_at).fromNow()}`} />
+                <CardHeader title={title} subheader={`${author} asked ${dayjs(created_at).fromNow()}`} />
             </Card>
         </Link>
     )

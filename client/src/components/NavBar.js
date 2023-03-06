@@ -17,7 +17,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 //import MoreIcon from '@mui/icons-material/MoreVert';
 import { UserContext } from './context/UserContext';
 import { Link } from '@mui/material';
-//import Drawer from '@mui/material/Drawer';
+import logo from '../../src/logo-transparent.png'
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -108,14 +109,7 @@ function NavBar() {
             <AppBar position="static" sx={{backgroundColor: '#f5f5f5', color: '#646464'}}>
                 <Toolbar>
                     <Link href='/' underline='none'>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' } }}
-                    >
-                        App logo here?
-                    </Typography>
+                        <img src={logo} width="200px" height="32px" />
                     </Link>
                     <Search>
                         <SearchIconWrapper>
