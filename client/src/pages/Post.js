@@ -24,7 +24,7 @@ function Post() {
         <>
             <Container component='div' sx={{ border: '1px solid red' }}>
                 <h1>{post.title}</h1>
-                <cite>Asked by {post.user_account_name}</cite>
+                <cite>Asked by User</cite>
                 <p>{post.body}</p>
                 <Box
                     m={1}
