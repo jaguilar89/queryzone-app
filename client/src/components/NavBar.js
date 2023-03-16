@@ -118,7 +118,7 @@ function NavBar() {
                         <StyledInputBase
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
-                            onChange={() => console.log('SEARCH GOES HERE')} //SEARCH GOES HERE
+                            //onChange={() => console.log('SEARCH GOES HERE')} //SEARCH GOES HERE
                         />
                     </Search>
                     <Box sx={{ flexGrow: 1 }} />

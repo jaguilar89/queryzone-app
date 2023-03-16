@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 import Alert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext, useState } from 'react';
-import { UserContext } from './context/UserContext';
+import { UserContext } from '../components/context/UserContext';
 
 /* function Copyright(props) {
   return (

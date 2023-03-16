@@ -11,7 +11,7 @@ function NewPostForm({ postList, setPostList }) {
     const [body, setBody] = useState("")
     const navigate = useNavigate()
 
-    async function handleSubmit(e) {
+   /*  async function handleSubmit(e) {
         e.preventDefault()
 
         const res = await fetch('/api/posts', {
@@ -29,11 +29,12 @@ function NewPostForm({ postList, setPostList }) {
             const err = await res.json()
             console.log(err)
         }
-    }
+    } */
+
     return (
         <Container
             component='form'
-            onSubmit={handleSubmit}
+            //onSubmit={handleSubmit}
             sx={{ display: 'grid' }}
         >
             <TextField
