@@ -10,13 +10,11 @@ class Api::PostsController < ApplicationController
   end
 
   def create
-    post = @current_user.posts.create(title: params[:title], body: params[:body])
-    render json: post, status: :created
   end
 
   private
 
   def post_params
-    params.permit(:title, :body, :user_account_id)
+    params.permit(:title, :body)
   end
 end
