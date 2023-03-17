@@ -10,6 +10,8 @@ class Api::PostsController < ApplicationController
   end
 
   def create
+    post = Post.create(title: params[:title], body: params[:body])
+    render json: post, status: :created
   end
 
   private
