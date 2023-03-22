@@ -106,7 +106,7 @@ function NavBar() {
     
     return (
         <Box sx={{ flexGrow: 1, position: 'sticky',  }}>
-            <AppBar position="static" sx={{backgroundColor: '#f5f5f5', color: '#646464'}}>
+            <AppBar position="static" sx={{backgroundColor: '#121212', color: '#646464'}}>
                 <Toolbar>
                     <Link href='/' underline='none'>
                         <img src={logo} width="200px" height="32px" />

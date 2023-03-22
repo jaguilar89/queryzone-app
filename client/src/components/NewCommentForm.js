@@ -1,10 +1,12 @@
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
+import Alert from "@mui/material/Alert";
 import { useState } from "react";
 import { Button } from "@mui/material";
 
 function NewCommentForm({ postID, postComments, setPostComments }) {
     const [comment, setComment] = useState("")
+    const [errors, setErrors] = useState([])
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -24,7 +26,7 @@ function NewCommentForm({ postID, postComments, setPostComments }) {
             e.target.reset()
         } else {
             const err = await res.json()
-            console.log(err)
+            setErrors(err.errors)
         }
 
     }
@@ -42,6 +44,7 @@ function NewCommentForm({ postID, postComments, setPostComments }) {
                 multiline
                 rows={5}
             />
+            {errors && errors.map((err) => <Alert key={err} severity="error">{err}</Alert>)}
             <Button
                 type="submit"
                 variant="contained"

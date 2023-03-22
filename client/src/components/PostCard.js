@@ -7,7 +7,7 @@ function PostCard({ postId, title, created_at }) {
     dayjs.extend(relativeTime)
     return (
         <Link href={`/posts/${postId}`} underline="none">
-            <Card sx={{ width: 'auto' }}>
+            <Card sx={{ width: 'auto', border: '1px solid gray' }}>
                 <CardHeader title={title} subheader={`User asked ${dayjs(created_at).fromNow()}`} />
             </Card>
         </Link>

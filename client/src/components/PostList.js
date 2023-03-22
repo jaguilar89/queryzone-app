@@ -49,8 +49,6 @@ function PostList({ postList, setPostList }) {
       margin: 'auto',
       textAlign: 'left',
       backgroundColor: 'white',
-      color: 'blue',
-      border: '1px solid red',
       overflowWrap: 'break-word',
    }
 

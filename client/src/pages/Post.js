@@ -22,7 +22,7 @@ function Post() {
 
     return (
         <>
-            <Container component='div' sx={{ border: '1px solid red' }}>
+            <Container component='div'>
                 <h1>{post.title}</h1>
                 <cite>Asked by User</cite>
                 <p>{post.body}</p>
