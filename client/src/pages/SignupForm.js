@@ -10,6 +10,7 @@ import Alert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import { UserContext } from '../components/context/UserContext';
+import logo from '../../src/logo-transparent.png'
 
 /* function Copyright(props) {
   return (
@@ -68,7 +69,8 @@ function SignupForm({ setShowLogin }) {
                         alignItems: 'center',
                     }}
                 >
-                    <h1>Logo here</h1>
+                    <img src={logo} width="300px" height="40px" />
+                    <br />
                     <Typography component="h1" variant="h5">
                         Sign Up For An Account
                     </Typography>
