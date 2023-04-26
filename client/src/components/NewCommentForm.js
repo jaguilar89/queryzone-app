@@ -23,6 +23,8 @@ function NewCommentForm({ postID, postComments, setPostComments }) {
         if (res.ok) {
             const comment = await res.json()
             setPostComments([...postComments, comment])
+            setComment(null)
+            setErrors(null)
             e.target.reset()
         } else {
             const err = await res.json()
@@ -39,7 +41,7 @@ function NewCommentForm({ postID, postComments, setPostComments }) {
         >
             <h2>Add a comment</h2>
             <TextField
-                onChange={(e) => setComment(e.currentTarget.value)}
+                onChange={(e) => setComment(e.target.value)}
                 fullWidth
                 multiline
                 rows={5}
