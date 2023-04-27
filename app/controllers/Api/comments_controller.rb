@@ -1,6 +1,4 @@
 class Api::CommentsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_response
-
   def create
     comment = @current_user.comments.create!(body: params[:body], post_id: params[:post_id])
     render json: comment, status: :accepted
@@ -8,8 +6,13 @@ class Api::CommentsController < ApplicationController
 
   def update
     comment = @current_user.comments.find_by(id: params[:id])
-    comment.update!(body: params[:body])
-    render json: comment, status: :ok
+
+    if comment
+      comment.update!(body: params[:body])
+      render json: comment, status: :ok
+    else
+      render json: { errors: ["You are not authorized to perform this action"] }, status: :unauthorized
+    end
   end
 
   def destroy
