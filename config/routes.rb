@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     resources :posts, only: [:index, :show, :create]
-    resources :comments, only: [:create, :update, :destroy]
+    resources :comments, only: [:index, :create, :update, :destroy]
     get "/me", to: "user_accounts#show"
     post "/signup", to: "user_accounts#create"
     post "/login", to: "sessions#create"

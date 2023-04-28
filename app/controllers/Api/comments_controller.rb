@@ -1,4 +1,9 @@
 class Api::CommentsController < ApplicationController
+  def index
+    comments = Comment.all
+    render json: comments
+  end
+
   def create
     comment = @current_user.comments.create!(body: params[:body], post_id: params[:post_id])
     render json: comment, status: :accepted

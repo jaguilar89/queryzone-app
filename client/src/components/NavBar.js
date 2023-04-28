@@ -17,6 +17,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 //import MoreIcon from '@mui/icons-material/MoreVert';
 import { UserContext } from './context/UserContext';
 import { Link } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../src/logo-transparent.png'
 
 
@@ -65,6 +66,8 @@ function NavBar() {
 
     const { setUser } = React.useContext(UserContext)
 
+    const navigate = useNavigate()
+
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -79,7 +82,10 @@ function NavBar() {
         const res = await fetch('/api/logout', {
             method: 'DELETE'
         })
-        if (res.ok) setUser(null)
+        if (res.ok) {
+            setUser(null)
+            navigate('/')
+        }
     }
 
     const menuId = 'primary-search-account-menu';

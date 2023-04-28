@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import { UserContext } from '../components/context/UserContext';
 import logo from '../../src/logo-transparent.png'
+import { useNavigate } from 'react-router-dom';
 
 /* function Copyright(props) {
   return (
@@ -29,6 +30,7 @@ function LoginForm({ setShowLogin }) {
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
   const { setUser } = useContext(UserContext)
+  const navigate = useNavigate()
   const theme = createTheme();
   
   async function handleSubmit(e) {
@@ -47,6 +49,7 @@ function LoginForm({ setShowLogin }) {
     if (res.ok) {
       const user = await res.json();
       setUser(user)
+      navigate('/home')
     } else {
       const err = await res.json();
       setErrors(err.errors)
