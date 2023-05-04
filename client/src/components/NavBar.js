@@ -4,7 +4,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 //import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
@@ -64,7 +63,7 @@ function NavBar() {
 
     const isMenuOpen = Boolean(anchorEl);
 
-    const { setUser } = React.useContext(UserContext)
+    const { user, setUser } = React.useContext(UserContext)
 
     const navigate = useNavigate()
 
@@ -106,7 +105,7 @@ function NavBar() {
             onClose={handleMenuClose}
         >
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-            <MenuItem onClick={handleLogout}>Log out</MenuItem>
+            <MenuItem onClick={handleLogout}>Log out {user.username}</MenuItem>
         </Menu>
     );
     
@@ -115,7 +114,7 @@ function NavBar() {
             <AppBar position="static" sx={{backgroundColor: '#121212', color: '#646464'}}>
                 <Toolbar>
                     <Link href='/' underline='none'>
-                        <img src={logo} width="200px" height="32px" />
+                        <img src={logo} width="200px" height="32px" alt='logo'/>
                     </Link>
                     <Search>
                         <SearchIconWrapper>

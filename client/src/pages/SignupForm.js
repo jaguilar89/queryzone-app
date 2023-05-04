@@ -11,25 +11,28 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import { UserContext } from '../components/context/UserContext';
 import logo from '../../src/logo-transparent.png'
+import { useNavigate } from 'react-router-dom';
 
-/* function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-} */
+function Copyright(props) {
+    return (
+      <Typography variant="body2" color="text.secondary" align="center" {...props}>
+        {'Copyright © '}
+        <Link color="inherit" href="https://github.com/jaguilar89">
+          Jose Aguilar
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  } 
+
 function SignupForm({ setShowLogin }) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [errors, setErrors] = useState([])
     const { setUser } = useContext(UserContext)
+    const navigate = useNavigate()
     const theme = createTheme()
 
     async function handleSubmit(e) {
@@ -50,6 +53,7 @@ function SignupForm({ setShowLogin }) {
         if (res.ok) {
             const user = await res.json()
             setUser(user)
+            navigate('/home')
         } else {
             const err = await res.json()
             setErrors(err.errors)
@@ -69,7 +73,7 @@ function SignupForm({ setShowLogin }) {
                         alignItems: 'center',
                     }}
                 >
-                    <img src={logo} width="300px" height="40px" />
+                    <img src={logo} width="300px" height="40px" alt='logo'/>
                     <br />
                     <Typography component="h1" variant="h5">
                         Sign Up For An Account
@@ -128,6 +132,8 @@ function SignupForm({ setShowLogin }) {
                     </Box>
                 </Box>
             </Container>
+            <br />
+            {Copyright()}
         </ThemeProvider>
     );
 }

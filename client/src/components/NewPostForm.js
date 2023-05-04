@@ -2,16 +2,17 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import Box from '@mui/material/Box'
 import Button from "@mui/material/Button";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useState } from "react";
+//import { useNavigate } from "react-router-dom";
 
 
 function NewPostForm({ postList, setPostList }) {
+    /*
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
     const navigate = useNavigate()
 
-   /*  async function handleSubmit(e) {
+     async function handleSubmit(e) {
         e.preventDefault()
 
         const res = await fetch('/api/posts', {
@@ -40,7 +41,7 @@ function NewPostForm({ postList, setPostList }) {
             <TextField
                 variant="filled"
                 label="Title"
-                onChange={(e) => setTitle(e.currentTarget.value)}
+                //onChange={(e) => setTitle(e.currentTarget.value)}
             />
             <hr />
             <TextField
@@ -48,7 +49,7 @@ function NewPostForm({ postList, setPostList }) {
                 multiline
                 label="Specify the details of your question..."
                 rows={32}
-                onChange={(e) => setBody(e.currentTarget.value)}
+                //onChange={(e) => setBody(e.currentTarget.value)}
                 inputProps={{
                     maxLength: 1000,
                 }}

@@ -13,18 +13,19 @@ import { UserContext } from '../components/context/UserContext';
 import logo from '../../src/logo-transparent.png'
 import { useNavigate } from 'react-router-dom';
 
-/* function Copyright(props) {
+ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/jaguilar89">
+        Jose Aguilar
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
-} */
+} 
+
 function LoginForm({ setShowLogin }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -69,7 +70,7 @@ function LoginForm({ setShowLogin }) {
             alignItems: 'center',
           }}
         >
-          <img src={logo} width="300px" height="40px" />
+          <img src={logo} width="300px" height="40px" alt='logo'/>
           <br />
           <Typography component="h1" variant="h5">
             Sign in
@@ -118,6 +119,8 @@ function LoginForm({ setShowLogin }) {
           </Box>
         </Box>
       </Container>
+      <br />
+      {Copyright()}
     </ThemeProvider>
   );
 }

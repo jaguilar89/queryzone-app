@@ -7,7 +7,6 @@ import Post from './pages/Post';
 import NewPostForm from './components/NewPostForm';
 import NavBar from './components/NavBar';
 import Login from './pages/Login'
-import SignupForm from './pages/SignupForm';
 
 function App() {
     const { user } = useContext(UserContext)
