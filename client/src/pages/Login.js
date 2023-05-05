@@ -4,15 +4,15 @@ import SignupForm from './SignupForm';
 
 function Login() {
     const [showLogin, setShowLogin] = useState(true)
-    const [loading, setLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     return (
         <div>
             {showLogin ? (
-                <LoginForm setShowLogin={setShowLogin} loading={loading} setLoading={setLoading}/>
+                <LoginForm setShowLogin={setShowLogin} isLoading={isLoading} setIsLoading={setIsLoading}/>
 
             ) : (
-                <SignupForm setShowLogin={setShowLogin} loading={loading} setLoading={setLoading}/>
+                <SignupForm setShowLogin={setShowLogin} isLoading={isLoading} setIsLoading={setIsLoading}/>
             )
             }
         </div>

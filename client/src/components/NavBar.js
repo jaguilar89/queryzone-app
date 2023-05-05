@@ -113,7 +113,7 @@ function NavBar() {
         <Box sx={{ flexGrow: 1, position: 'sticky',  }}>
             <AppBar position="static" sx={{backgroundColor: '#121212', color: '#646464'}}>
                 <Toolbar>
-                    <Link href='/' underline='none'>
+                    <Link href='/home' underline='none'>
                         <img src={logo} width="200px" height="32px" alt='logo'/>
                     </Link>
                     <Search>

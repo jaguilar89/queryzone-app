@@ -7,6 +7,7 @@ import NewCommentForm from "../components/NewCommentForm";
 function Post() {
     const [post, setPost] = useState([])
     const [postComments, setPostComments] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
     const { id } = useParams();
 
     useEffect(() => {
@@ -47,6 +48,8 @@ function Post() {
                 postID={id}
                 postComments={postComments}
                 setPostComments={setPostComments}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
             />
         </>
     )

@@ -3,13 +3,16 @@ import Container from "@mui/material/Container";
 import Alert from "@mui/material/Alert";
 import { useState } from "react";
 import { Button } from "@mui/material";
+import LoadingScreen from "./LoadingScreen";
 
-function NewCommentForm({ postID, postComments, setPostComments }) {
+function NewCommentForm({ postID, postComments, isLoading, setIsLoading, setPostComments }) {
     const [comment, setComment] = useState("")
     const [errors, setErrors] = useState([])
 
     async function handleSubmit(e) {
         e.preventDefault()
+        setIsLoading(true)
+
         const res = await fetch("/api/comments", {
             method: "POST",
             headers: {
@@ -22,12 +25,14 @@ function NewCommentForm({ postID, postComments, setPostComments }) {
         })
         if (res.ok) {
             const comment = await res.json()
+            setIsLoading(false)
             setPostComments([...postComments, comment])
             setComment(null)
             setErrors(null)
             e.target.reset()
         } else {
             const err = await res.json()
+            setIsLoading(false)
             setErrors(err.errors)
         }
 
@@ -39,6 +44,7 @@ function NewCommentForm({ postID, postComments, setPostComments }) {
             sx={{ textAlign: 'center', paddingTop: 8 }}
             onSubmit={handleSubmit}
         >
+            {isLoading && <LoadingScreen />}
             <h2>Add a comment</h2>
             <TextField
                 onChange={(e) => setComment(e.target.value)}

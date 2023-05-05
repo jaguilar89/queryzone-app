@@ -7,16 +7,15 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Alert from '@mui/material/Alert';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress  from '@mui/material/CircularProgress';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import { UserContext } from '../components/context/UserContext';
 import logo from '../../src/logo-transparent.png'
 import { useNavigate } from 'react-router-dom';
+import LoadingScreen from '../components/LoadingScreen';
 
 
-function LoginForm({ loading, setLoading, setShowLogin }) {
+function LoginForm({ isLoading, setIsLoading, setShowLogin }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
@@ -26,7 +25,7 @@ function LoginForm({ loading, setLoading, setShowLogin }) {
   
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true)
+    setIsLoading(true)
 
     const res = await fetch("/api/login", {
       method: "POST",
@@ -41,11 +40,11 @@ function LoginForm({ loading, setLoading, setShowLogin }) {
     if (res.ok) {
       const user = await res.json();
       setUser(user)
-      setLoading(false)
+      setIsLoading(false)
       navigate('/home')
     } else {
       const err = await res.json();
-      setLoading(false)
+      setIsLoading(false)
       setErrors(err.errors)
     }
 
@@ -67,14 +66,7 @@ function LoginForm({ loading, setLoading, setShowLogin }) {
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
-      {loading && 
-            <Backdrop
-            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={loading}
-          >
-            <CircularProgress color="inherit" />
-          </Backdrop>
-          }
+      {isLoading && <LoadingScreen />}
         <CssBaseline />
         <Box
           sx={{
