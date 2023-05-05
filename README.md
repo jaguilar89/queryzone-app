@@ -1,17 +1,17 @@
-#Phase 4 Project
+# Phase 4 Project
 This is my Phase 4 Project for Flatiron School's Software Engineering program. It is a simple full stack question and answer site running with a React frontend and a Rails backend. A user can create a secure account to log in, then they can view a list of randomly generated seeded data in the form of questions and post comments(answers) on them. The users comments may also be edited and/or deleted.
 
-##Technologies
+## Technologies
 React
 Material UI
 React Router v6
 Ruby on Rails
 PostgreSQL
 
-##Requirements
+## Requirements
 - Latest version of your preferred browser
 
-##Usage
+## Usage
 - Visit [](https://queryzone.onrender.com/) and sign up for an account.
 - Once you're logged in, click on any one of the seeded posts and comment anything you'd like.
 - Comments from your account can be edited and/or deleted.
