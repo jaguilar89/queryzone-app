@@ -16,11 +16,10 @@ import logo from '../../src/logo-transparent.png'
 import { useNavigate } from 'react-router-dom';
 
 
-function LoginForm({ setShowLogin }) {
+function LoginForm({ loading, setLoading, setShowLogin }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
-  const [loading, setLoading] = useState(false)
   const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
   const theme = createTheme();
@@ -46,6 +45,7 @@ function LoginForm({ setShowLogin }) {
       navigate('/home')
     } else {
       const err = await res.json();
+      setLoading(false)
       setErrors(err.errors)
     }
 
@@ -67,6 +67,14 @@ function LoginForm({ setShowLogin }) {
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
+      {loading && 
+            <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={loading}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+          }
         <CssBaseline />
         <Box
           sx={{
@@ -82,13 +90,6 @@ function LoginForm({ setShowLogin }) {
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            {loading && 
-            <Backdrop
-            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          >
-            <CircularProgress color="inherit" />
-          </Backdrop>
-          }
             <TextField
               margin="normal"
               required
