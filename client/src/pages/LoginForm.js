@@ -7,35 +7,27 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Alert from '@mui/material/Alert';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress  from '@mui/material/CircularProgress';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import { UserContext } from '../components/context/UserContext';
 import logo from '../../src/logo-transparent.png'
 import { useNavigate } from 'react-router-dom';
 
- function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/jaguilar89">
-        Jose Aguilar
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-} 
 
 function LoginForm({ setShowLogin }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
+  const [loading, setLoading] = useState(false)
   const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
   const theme = createTheme();
   
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true)
 
     const res = await fetch("/api/login", {
       method: "POST",
@@ -50,6 +42,7 @@ function LoginForm({ setShowLogin }) {
     if (res.ok) {
       const user = await res.json();
       setUser(user)
+      setLoading(false)
       navigate('/home')
     } else {
       const err = await res.json();
@@ -57,6 +50,19 @@ function LoginForm({ setShowLogin }) {
     }
 
   }
+
+  function Copyright(props) {
+    return (
+      <Typography variant="body2" color="text.secondary" align="center" {...props}>
+        {'Copyright © '}
+        <Link color="inherit" href="https://github.com/jaguilar89">
+          Jose Aguilar
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  } 
 
   return (
     <ThemeProvider theme={theme}>
@@ -76,6 +82,13 @@ function LoginForm({ setShowLogin }) {
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            {loading && 
+            <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+          }
             <TextField
               margin="normal"
               required
