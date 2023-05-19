@@ -3,4 +3,5 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :user_accounts, through: :comments
+  belongs_to :user_account
 end

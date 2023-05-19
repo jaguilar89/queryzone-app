@@ -2,14 +2,16 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import Box from '@mui/material/Box'
 import Button from "@mui/material/Button";
-//import { useState } from "react";
-//import { useNavigate } from "react-router-dom";
+import  Alert from "@mui/material/Alert";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function NewPostForm({ postList, setPostList }) {
-    /*
+    
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
+    const [errors, setErrors] = useState([])
     const navigate = useNavigate()
 
      async function handleSubmit(e) {
@@ -28,20 +30,20 @@ function NewPostForm({ postList, setPostList }) {
             navigate(`/posts/${post.id}`)
         } else {
             const err = await res.json()
-            console.log(err)
+            setErrors(err)
         }
-    } */
+    } 
 
     return (
         <Container
             component='form'
-            //onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             sx={{ display: 'grid' }}
         >
             <TextField
                 variant="filled"
                 label="Title"
-                //onChange={(e) => setTitle(e.currentTarget.value)}
+                onChange={(e) => setTitle(e.currentTarget.value)}
             />
             <hr />
             <TextField
@@ -49,7 +51,7 @@ function NewPostForm({ postList, setPostList }) {
                 multiline
                 label="Specify the details of your question..."
                 rows={32}
-                //onChange={(e) => setBody(e.currentTarget.value)}
+                onChange={(e) => setBody(e.currentTarget.value)}
                 inputProps={{
                     maxLength: 1000,
                 }}
@@ -58,6 +60,7 @@ function NewPostForm({ postList, setPostList }) {
             <Box
                 component="div"
                 sx={{ textAlign: 'center' }}>
+                    {errors && errors.map((err) => <Alert key={err} severity="error">{err}</Alert>)}
                 <Button
                     variant="contained"
                     type='submit'

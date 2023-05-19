@@ -25,7 +25,7 @@ function Post() {
         <>
             <Container component='div'>
                 <h1>{post.title}</h1>
-                <cite>Asked by User</cite>
+                <cite>Asked by {post.user_account_name}</cite>
                 <p>{post.body}</p>
                 <Box
                     m={1}
