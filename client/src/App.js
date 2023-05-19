@@ -1,6 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useContext, useState } from 'react';
+import AboutPage from './pages/AboutPage';
 import { UserContext } from './components/context/UserContext'
 import PostList from './components/PostList';
 import Post from './pages/Post';
@@ -20,6 +21,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Login />} />
                 <Route path='/home' element={<PostList postList={postList} setPostList={setPostList} />} />
+                <Route path='/about' element={<AboutPage />} />
                 <Route path='/posts/:id' element={<Post />} />
                 <Route path='/posts/new' element={<NewPostForm postList={postList} setPostList={setPostList} />} />
             </Routes>
