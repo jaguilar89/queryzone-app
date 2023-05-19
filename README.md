@@ -13,5 +13,6 @@ This is my Phase 4 Project for Flatiron School's Software Engineering program. I
 
 ## Usage
 - Visit [](https://queryzone.onrender.com/) and sign up for an account.
-- Once you're logged in, click on any one of the seeded posts and comment anything you'd like.
+- Once you're logged in, create a post (ask a question) and specify the details of your question.
+- Add a comment to your post or any of the other posts.
 - Comments from your account can be edited and/or deleted.
