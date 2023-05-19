@@ -5,15 +5,10 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
-//import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-//import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-//import MailIcon from '@mui/icons-material/Mail';
-//import NotificationsIcon from '@mui/icons-material/Notifications';
-//import MoreIcon from '@mui/icons-material/MoreVert';
 import { UserContext } from './context/UserContext';
 import { Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -104,7 +99,6 @@ function NavBar() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
             <MenuItem onClick={handleLogout}>Log out {user.username}</MenuItem>
         </Menu>
     );
