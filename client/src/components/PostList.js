@@ -26,7 +26,7 @@ function PostList({ postList, setPostList }) {
       <PostCard
          key={post.id}
          postId={post.id}
-         //author={post.user_account_name}
+         author={post.user_account_name}
          title={post.title}
          body={post.body}
          comments={post.comments}
