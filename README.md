@@ -12,7 +12,7 @@ This is my Phase 4 Project for Flatiron School's Software Engineering program. I
 - Latest version of your preferred browser
 
 ## Usage
-- Visit [](https://queryzone.onrender.com/) and sign up for an account.
+- Visit [https://queryzone.onrender.com/](https://queryzone.onrender.com/) and sign up for an account.
 - Once you're logged in, create a post (ask a question) and specify the details of your question.
 - Add a comment to your post or any of the other posts.
 - Comments from your account can be edited and/or deleted.
